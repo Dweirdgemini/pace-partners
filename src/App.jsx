@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { TopoBackground } from './components/TopoBackground'
+import { PhoneMockup } from './components/PhoneMockup'
 
 const PARTNER_LOGOS = ['Fernbrook', 'Aventra', 'Coldpress', 'Northloop', 'Rivergate', 'Marlow']
 
@@ -69,61 +70,42 @@ const TESTIMONIALS = [
   },
 ]
 
-function useCountUp(target, duration = 2200) {
-  const [value, setValue] = useState(0)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    let start = null
-    function tick(ts) {
-      if (start === null) start = ts
-      const progress = Math.min((ts - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setValue(Math.floor(eased * target))
-      if (progress < 1) ref.current = requestAnimationFrame(tick)
-    }
-    ref.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(ref.current)
-  }, [target, duration])
-
-  return value
-}
-
-function TopoBackground() {
-  return (
-    <svg className="topo" viewBox="0 0 1180 520" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="topoFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d6ff3f" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#d6ff3f" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-        <path
-          key={i}
-          d={`M -50 ${80 + i * 60} C 200 ${20 + i * 60}, 350 ${140 + i * 60}, 600 ${70 + i * 60} S 1000 ${20 + i * 60}, 1230 ${90 + i * 60}`}
-          fill="none"
-          stroke="url(#topoFade)"
-          strokeWidth="1.2"
-        />
-      ))}
-    </svg>
-  )
-}
-
-function PhoneCounter() {
-  const steps = useCountUp(4213897)
-  return (
-    <div className="counter-card">
-      <div className="counter-number">{steps.toLocaleString()}</div>
-      <div className="counter-label">Steps converted to rewards on Pace, right now</div>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <div>
+      <header className="hero">
+        <TopoBackground />
+        <div className="wrap hero-inner">
+          <div className="hero-logo">
+            <span className="logo-mark">P</span>
+            pace <span className="logo-slash">/partners</span>
+          </div>
+
+          <PhoneMockup />
+
+          <h1>
+            Turn everyday movement into <em>real-life rewards</em>
+          </h1>
+          <p className="hero-sub">
+            Partner with Pace to reach millions of people already building a daily walking habit.
+          </p>
+
+          <div className="logo-strip">
+            {PARTNER_LOGOS.map((name) => (
+              <span key={name}>{name}</span>
+            ))}
+          </div>
+
+          <a href="#contact" className="btn-primary hero-cta">
+            Interested? Contact us
+          </a>
+
+          <a href="#how-it-works" className="scroll-arrow" aria-label="Scroll to learn more">
+            ↓
+          </a>
+        </div>
+      </header>
+
       <nav className="nav">
         <div className="nav-inner">
           <div className="logo">
@@ -135,36 +117,6 @@ export default function App() {
           </a>
         </div>
       </nav>
-
-      <header className="hero">
-        <TopoBackground />
-        <div className="wrap hero-inner">
-          <div className="eyebrow">
-            <span className="pulse-dot" />
-            Now booking Q1 trail slots
-          </div>
-          <h1>
-            Turn everyday motion into <em>real rewards</em> — partner with Pace
-          </h1>
-          <p className="hero-sub">
-            Reach members who are already moving. Show up where a walk becomes a reason to come back to your brand.
-          </p>
-          <PhoneCounter />
-          <div className="cta-row">
-            <a href="#contact" className="btn-primary">
-              Start a partnership
-            </a>
-            <a href="#how-it-works" className="btn-ghost">
-              See how it works
-            </a>
-          </div>
-          <div className="logo-strip">
-            {PARTNER_LOGOS.map((name) => (
-              <span key={name}>{name}</span>
-            ))}
-          </div>
-        </div>
-      </header>
 
       <section className="stats">
         <div className="wrap stats-grid">

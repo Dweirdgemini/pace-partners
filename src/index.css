@@ -125,10 +125,10 @@ button {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 96px 0 80px;
+  padding: 40px 0 72px;
   background:
-    radial-gradient(ellipse 900px 500px at 50% 0%, rgba(214, 255, 63, 0.10), transparent 60%),
-    linear-gradient(180deg, var(--ink) 0%, #0a140f 100%);
+    radial-gradient(ellipse 1100px 700px at 50% 38%, rgba(214, 255, 63, 0.22), transparent 62%),
+    linear-gradient(155deg, #050a07 0%, #12261a 42%, #1c3322 62%, #0a1710 100%);
 }
 
 .topo {
@@ -143,6 +143,18 @@ button {
   position: relative;
   z-index: 2;
   text-align: center;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
 }
 
 .eyebrow {
@@ -194,37 +206,143 @@ button {
   font-size: 18px;
   color: var(--sage);
   max-width: 540px;
-  margin: 0 auto 40px;
+  margin: 0 auto 36px;
   line-height: 1.55;
 }
 
-.counter-card {
+.hero-cta {
+  margin-bottom: 40px;
+}
+
+.scroll-arrow {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
-  background: var(--ink-2);
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 18px 28px;
-  margin-bottom: 44px;
+  color: var(--sage);
+  font-size: 16px;
+  text-decoration: none;
+  animation: bounce 2.2s infinite;
 }
 
-.counter-number {
+.scroll-arrow:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.phone-frame {
+  position: relative;
+  width: 220px;
+  height: 452px;
+  margin: 0 auto 36px;
+  background: #0a1710;
+  border: 3px solid #23361f;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.65);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 20px;
+  background: #0a1710;
+  border-radius: 0 0 14px 14px;
+  z-index: 3;
+}
+
+.phone-screen {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(165deg, #101f16, #0a140f);
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 30px 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-statusbar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--sage);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.phone-screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 8px;
+  font-family: var(--display);
+}
+
+.phone-back {
+  color: var(--sage);
+  font-size: 18px;
+}
+
+.phone-route {
+  width: 100%;
+  flex: 1;
+}
+
+.phone-stat-chip {
+  background: rgba(214, 255, 63, 0.1);
+  border: 1px solid rgba(214, 255, 63, 0.25);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.phone-stat-num {
   font-family: var(--display);
   font-weight: 800;
-  font-size: 34px;
+  font-size: 20px;
   color: var(--lime);
   font-variant-numeric: tabular-nums;
-  min-width: 168px;
-  text-align: left;
 }
 
-.counter-label {
-  text-align: left;
-  font-size: 13px;
+.phone-stat-label {
+  font-size: 11px;
   color: var(--sage);
-  line-height: 1.4;
-  max-width: 160px;
+  margin-top: 1px;
+}
+
+.phone-reward-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--paper);
+  background: var(--ink-2);
+  border-radius: 12px;
+  padding: 9px 12px;
+}
+
+.phone-reward-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex: none;
 }
 
 .cta-row {
@@ -568,19 +686,14 @@ button {
   .testi-grid {
     grid-template-columns: 1fr;
   }
-  .counter-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .counter-number,
-  .counter-label {
-    text-align: center;
-  }
-  .cta-row {
-    flex-direction: column;
-    align-items: center;
+  .phone-frame {
+    width: 180px;
+    height: 370px;
   }
   .logo-strip {
-    gap: 28px;
+    gap: 22px;
+  }
+  .logo-strip span {
+    font-size: 16px;
   }
 }
