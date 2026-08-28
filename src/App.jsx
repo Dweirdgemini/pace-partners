@@ -1,5 +1,6 @@
 import { TopoBackground } from './components/TopoBackground'
 import { PhoneMockup } from './components/PhoneMockup'
+import { FloatingCTA } from './components/FloatingCTA'
 
 const PARTNER_LOGOS = ['Fernbrook', 'Aventra', 'Coldpress', 'Northloop', 'Rivergate', 'Marlow']
 
@@ -96,9 +97,7 @@ export default function App() {
             ))}
           </div>
 
-          <a href="#contact" className="btn-primary hero-cta">
-            Interested? Contact us
-          </a>
+          <FloatingCTA />
 
           <a href="#how-it-works" className="scroll-arrow" aria-label="Scroll to learn more">
             ↓
@@ -106,18 +105,7 @@ export default function App() {
         </div>
       </header>
 
-      <nav className="nav">
-        <div className="nav-inner">
-          <div className="logo">
-            <span className="logo-mark">P</span>
-            pace <span className="logo-slash">/partners</span>
-          </div>
-          <a href="#contact" className="nav-cta">
-            Contact us
-          </a>
-        </div>
-      </nav>
-
+      
       <section className="stats">
         <div className="wrap stats-grid">
           <div className="stat">
