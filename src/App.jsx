@@ -91,10 +91,15 @@ export default function App() {
             Partner with Pace to reach millions of people already building a daily walking habit.
           </p>
 
-          <div className="logo-strip">
-            {PARTNER_LOGOS.map((name) => (
-              <span key={name}>{name}</span>
-            ))}
+          <div className="logo-strip-viewport">
+            <div className="logo-strip">
+              {PARTNER_LOGOS.map((name) => (
+                <span key={name}>{name}</span>
+              ))}
+              {PARTNER_LOGOS.map((name) => (
+                <span key={`${name}-dup`} aria-hidden="true">{name}</span>
+              ))}
+            </div>
           </div>
 
           <FloatingCTA />

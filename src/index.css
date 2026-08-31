@@ -412,21 +412,42 @@ button {
   border-color: var(--sage);
 }
 
+.logo-strip-viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
 .logo-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 44px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: max-content;
   opacity: 0.55;
+  animation: marquee 28s linear infinite;
 }
 
 .logo-strip span {
+  flex: none;
   font-family: var(--display);
   font-weight: 700;
   font-size: 19px;
   letter-spacing: -0.01em;
   color: var(--paper);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-strip {
+    animation: none;
+  }
 }
 
 /* ---------- STATS ---------- */
