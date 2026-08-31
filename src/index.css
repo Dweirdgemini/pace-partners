@@ -210,8 +210,35 @@ button {
   line-height: 1.55;
 }
 
-.hero-cta {
-  margin-bottom: 40px;
+.floating-cta {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  z-index: 50;
+  background: var(--lime);
+  color: var(--ink);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 16px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.floating-cta-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.floating-cta:hover {
+  transform: translate(-50%, -2px);
+  box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.55);
 }
 
 .scroll-arrow {
@@ -385,21 +412,42 @@ button {
   border-color: var(--sage);
 }
 
+.logo-strip-viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
 .logo-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 44px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: max-content;
   opacity: 0.55;
+  animation: marquee 28s linear infinite;
 }
 
 .logo-strip span {
+  flex: none;
   font-family: var(--display);
   font-weight: 700;
   font-size: 19px;
   letter-spacing: -0.01em;
   color: var(--paper);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-strip {
+    animation: none;
+  }
 }
 
 /* ---------- STATS ---------- */
