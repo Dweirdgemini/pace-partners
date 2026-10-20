@@ -21,7 +21,7 @@ export function FloatingCTA() {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
     >
-      Interested? Contact us
+      Interested? Contact immediately
     </a>
   )
 }
